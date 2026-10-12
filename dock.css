@@ -1,0 +1,26 @@
+/* SDC header magnification dock – one-row icon + label; preserve existing brand palette. */
+.sdc-dock-nav { isolation: isolate; }
+.sdc-dock-link { transition: background-color 180ms ease, color 180ms ease; }
+.sdc-dock-icon {
+  transform-origin: center;
+  transition: transform 320ms cubic-bezier(.22, 1.3, .36, 1);
+  will-change: transform;
+}
+.sdc-dock-link:hover .sdc-dock-label,
+.sdc-dock-link:focus-visible .sdc-dock-label { font-weight: 600; }
+.sdc-dock-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 5px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
+}
+.sdc-dock-tooltip-visible,
+.sdc-dock-item:focus-within .sdc-dock-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sdc-dock-icon { transform: none !important; transition: none !important; }
+  .sdc-dock-tooltip, .sdc-dock-link { transition: none !important; }
+}
